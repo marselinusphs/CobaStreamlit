@@ -27,21 +27,25 @@ if __name__ == '__main__':
     st.title('Diabetes Prediction Web App')
 
     # getting the input data from the user
-    pregnancies = st.number_input('Number of Pregnancies')
-    glucose = st.number_input('Glucose Level')
-    bloodPressure = st.number_input('Blood Pressure value')
-    skinThickness = st.number_input('Skin Thickness value')
-    insulin = st.number_input('Insulin Level')
-    bmi = st.number_input('BMI value')
-    diabetesPedigreeFunction = st.number_input('Diabetes Pedigree Function value')
-    age = st.number_input('Age of the Person')
+    pregnancies = st.text_input('Number of Pregnancies')
+    glucose = st.text_input('Glucose Level')
+    bloodPressure = st.text_input('Blood Pressure value')
+    skinThickness = st.text_input('Skin Thickness value')
+    insulin = st.text_input('Insulin Level')
+    bmi = st.text_input('BMI value')
+    diabetesPedigreeFunction = st.text_input('Diabetes Pedigree Function value')
+    age = st.text_input('Age of the Person')
 
     # code for Prediction
     diagnosis = ''
 
     # creating a button for Prediction
     if st.button('Diabetes Test Result'):
-        diagnosis = diabetes_prediction(
-            [pregnancies, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunction, age]
-        )
+        try:
+            diagnosis = diabetes_prediction(
+                [pregnancies, glucose, bloodPressure, skinThickness, insulin, bmi, diabetesPedigreeFunction, age]
+            )
+        except:
+            diagnosis = "Harap masukkan inputan yang valid!"
+
     st.success(diagnosis)
